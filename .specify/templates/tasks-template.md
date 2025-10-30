@@ -1,161 +1,171 @@
 ---
 
-description: "Task list template for feature implementation"
+description: "Task list template for learning module development"
 ---
 
-# Tasks: [FEATURE NAME]
+# Tasks: [ASSIGNMENT MODULE NAME]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+**Input**: Assignment specification from `/specs/[###-topic-name]/spec.md`
+**Prerequisites**: Learning objectives defined, prerequisite modules identified
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
+**Purpose**: These tasks are for CREATING the learning module (assignment spec + tests + boilerplate), NOT for the learner solving the assignment.
 
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+---
 
-## Format: `[ID] [P?] [Story] Description`
+## Format: `[ID] [P?] [Category] Description`
 
 - **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
+- **[Category]**: Type of task (SPEC, TEST, BOILERPLATE, DOCS)
 - Include exact file paths in descriptions
 
-## Path Conventions
+---
 
-- **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
+## Path Conventions for C++ Learning Modules
 
-<!-- 
-  ============================================================================
-  IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-  
-  The /speckit.tasks command MUST replace these with actual tasks based on:
-  - User stories from spec.md (with their priorities P1, P2, P3...)
-  - Feature requirements from plan.md
-  - Entities from data-model.md
-  - Endpoints from contracts/
-  
-  Tasks MUST be organized by user story so each story can be:
-  - Implemented independently
-  - Tested independently
-  - Delivered as an MVP increment
-  
-  DO NOT keep these sample tasks in the generated tasks.md file.
-  ============================================================================
--->
-
-## Phase 1: Setup (Shared Infrastructure)
-
-**Purpose**: Project initialization and basic structure
-
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+```text
+assignments/[###-topic-name]/
+├── README.md                    # Assignment specification
+├── CMakeLists.txt              # Build configuration
+├── include/                    # Header files for student implementation
+│   └── [module].h
+├── src/                        # Source files (student implements these)
+│   └── main.cpp                # Entry point or boilerplate
+├── tests/                      # Pre-written test suite
+│   ├── CMakeLists.txt
+│   └── test_[module].cpp
+└── references/                 # Links to learning resources
+    └── resources.md
+```
 
 ---
 
-## Phase 2: Foundational (Blocking Prerequisites)
+## Phase 1: Assignment Specification (SPEC)
 
-**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
+**Purpose**: Define the learning problem clearly and unambiguously
 
-**⚠️ CRITICAL**: No user story work can begin until this phase is complete
+- [ ] T001 [SPEC] Create assignment specification in `assignments/[###-topic-name]/README.md`
+  - Include: learning objectives, problem statement, requirements, input/output specs
+- [ ] T002 [SPEC] Define test suite overview and success criteria
+- [ ] T003 [P] [SPEC] Curate reference materials (cppreference, docs, textbooks)
+- [ ] T004 [P] [SPEC] Define code review criteria specific to this assignment
 
-Examples of foundational tasks (adjust based on your project):
-
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
-
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
-
----
-
-## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
-
-**Goal**: [Brief description of what this story delivers]
-
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
-
-> **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
-
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 1
-
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
-
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+**Constitution Verification**:
+- [ ] No solution hints or algorithm reveals in specification
+- [ ] Learning objectives clearly stated
+- [ ] Real-world relevance articulated
+- [ ] Prerequisites identified
 
 ---
 
-## Phase 4: User Story 2 - [Title] (Priority: P2)
+## Phase 2: Test Suite Development (TEST)
 
-**Goal**: [Brief description of what this story delivers]
+**Purpose**: Create comprehensive pre-written tests defining success
 
-**Independent Test**: [How to verify this story works on its own]
+**⚠️ CRITICAL**: Tests must be written BEFORE any assignment is given to learners
 
-### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
+- [ ] T005 Select C++ testing framework (Google Test recommended)
+- [ ] T006 [P] [TEST] Implement basic functionality tests in `tests/test_[module].cpp`
+  - [ ] Core requirement verification (REQ-001, REQ-002, etc.)
+- [ ] T007 [P] [TEST] Implement edge case tests
+  - [ ] Boundary conditions
+  - [ ] Empty input handling
+  - [ ] Maximum/minimum values
+- [ ] T008 [P] [TEST] Implement error handling tests
+  - [ ] Invalid input detection
+  - [ ] Exception behavior validation
+  - [ ] Error message verification
+- [ ] T009 [TEST] Configure test build system in `tests/CMakeLists.txt`
+- [ ] T010 [TEST] Create test runner script for automated execution
+- [ ] T011 [TEST] Verify test suite fails with missing implementation (RED state)
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 2
-
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
-
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
-
----
-
-## Phase 5: User Story 3 - [Title] (Priority: P3)
-
-**Goal**: [Brief description of what this story delivers]
-
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
-
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 3
-
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
-
-**Checkpoint**: All user stories should now be independently functional
+**Test Quality Verification**:
+- [ ] All requirements have corresponding tests
+- [ ] Tests have clear, descriptive names
+- [ ] Test output provides diagnostic information on failure
+- [ ] 100% code coverage of specification requirements
 
 ---
 
-[Add more user story phases as needed, following the same pattern]
+## Phase 3: Boilerplate & Setup (BOILERPLATE)
+
+**Purpose**: Provide necessary project structure WITHOUT revealing solutions
+
+- [ ] T012 [P] [BOILERPLATE] Create CMake build configuration in `assignments/[###-topic-name]/CMakeLists.txt`
+- [ ] T013 [P] [BOILERPLATE] Create header file skeleton in `include/[module].h`
+  - [ ] Function/class declarations
+  - [ ] Documentation comments for interface
+  - [ ] NO implementations
+- [ ] T014 [P] [BOILERPLATE] Create source file stub in `src/main.cpp` or `src/[module].cpp`
+  - [ ] Minimal entry point or structure
+  - [ ] TODO comments indicating where student implements solution
+  - [ ] NO solution logic
+- [ ] T015 [BOILERPLATE] Create `.gitignore` for build artifacts
+- [ ] T016 [BOILERPLATE] Verify boilerplate compiles but tests fail (expected state)
+
+**Constitution Verification**:
+- [ ] No implementation code provided
+- [ ] Clear separation: boilerplate vs. solution code
+- [ ] Student knows exactly what to implement
 
 ---
 
-## Phase N: Polish & Cross-Cutting Concerns
+## Phase 4: Documentation & Resources (DOCS)
 
-**Purpose**: Improvements that affect multiple user stories
+**Purpose**: Guide learners without revealing solutions
 
-- [ ] TXXX [P] Documentation updates in docs/
-- [ ] TXXX Code cleanup and refactoring
-- [ ] TXXX Performance optimization across all stories
-- [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+- [ ] T017 [P] [DOCS] Create reference materials document in `references/resources.md`
+  - [ ] Links to cppreference.com sections
+  - [ ] Relevant C++ Core Guidelines
+  - [ ] Textbook chapter references
+  - [ ] Debugging tool recommendations
+- [ ] T018 [P] [DOCS] Add conceptual hints (if needed) to README
+  - [ ] High-level thinking prompts only
+  - [ ] NO algorithm or solution reveals
+- [ ] T019 [P] [DOCS] Document test execution procedure
+- [ ] T020 [P] [DOCS] Create code review checklist in README
+- [ ] T021 [DOCS] Add "Getting Help" guidelines to README
+
+**Constitution Verification**:
+- [ ] Resources enable self-directed learning
+- [ ] No solution disclosure in documentation
+- [ ] Debugging strategies included
+
+---
+
+## Phase 5: Validation & Integration (VALIDATION)
+
+**Purpose**: Ensure module meets constitution standards
+
+- [ ] T022 Conduct constitution compliance review:
+  - [ ] Teaching-First Philosophy: No solutions provided
+  - [ ] Test-Driven Learning: Comprehensive tests pre-written
+  - [ ] Zero Solution Disclosure: All materials checked
+  - [ ] Progressive Mastery Path: Difficulty appropriate, prerequisites clear
+  - [ ] Code Review Gate: Review criteria defined
+  - [ ] Self-Reliance: Reference materials support independent learning
+- [ ] T023 Verify test suite:
+  - [ ] Tests compile and run
+  - [ ] Tests fail with boilerplate (RED state confirmed)
+  - [ ] Test output is clear and diagnostic
+- [ ] T024 Verify build system:
+  - [ ] CMake configuration works
+  - [ ] Compilation succeeds
+  - [ ] Test execution automated
+- [ ] T025 [P] Create solution (for instructor verification only—NOT shared with learners)
+- [ ] T026 Verify solution passes all tests (GREEN state confirmed)
+- [ ] T027 Document module in curriculum roadmap
+- [ ] T028 Add module to prerequisite dependency graph
+
+---
+
+## Phase 6: Peer Review (Optional but Recommended)
+
+**Purpose**: Second pair of eyes for quality and constitution compliance
+
+- [ ] T029 [P] Peer review assignment specification for clarity
+- [ ] T030 [P] Peer review test suite for comprehensiveness
+- [ ] T031 [P] Peer review for solution disclosure (constitution compliance)
+- [ ] T032 Incorporate feedback and iterate
 
 ---
 
@@ -163,89 +173,27 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Phase Dependencies
 
-- **Setup (Phase 1)**: No dependencies - can start immediately
-- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3+)**: All depend on Foundational phase completion
-  - User stories can then proceed in parallel (if staffed)
-  - Or sequentially in priority order (P1 → P2 → P3)
-- **Polish (Final Phase)**: Depends on all desired user stories being complete
-
-### User Story Dependencies
-
-- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 2 (P2)**: Can start after Foundational (Phase 2) - May integrate with US1 but should be independently testable
-- **User Story 3 (P3)**: Can start after Foundational (Phase 2) - May integrate with US1/US2 but should be independently testable
-
-### Within Each User Story
-
-- Tests (if included) MUST be written and FAIL before implementation
-- Models before services
-- Services before endpoints
-- Core implementation before integration
-- Story complete before moving to next priority
+1. **Specification (Phase 1)**: No dependencies—can start immediately
+2. **Test Suite (Phase 2)**: Depends on completed specification
+3. **Boilerplate (Phase 3)**: Can run parallel with test suite after specification
+4. **Documentation (Phase 4)**: Depends on specification and test suite outline
+5. **Validation (Phase 5)**: Depends on all previous phases
+6. **Peer Review (Phase 6)**: Depends on validation completion
 
 ### Parallel Opportunities
 
-- All Setup tasks marked [P] can run in parallel
-- All Foundational tasks marked [P] can run in parallel (within Phase 2)
-- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- All tests for a user story marked [P] can run in parallel
-- Models within a story marked [P] can run in parallel
-- Different user stories can be worked on in parallel by different team members
-
----
-
-## Parallel Example: User Story 1
-
-```bash
-# Launch all tests for User Story 1 together (if tests requested):
-Task: "Contract test for [endpoint] in tests/contract/test_[name].py"
-Task: "Integration test for [user journey] in tests/integration/test_[name].py"
-
-# Launch all models for User Story 1 together:
-Task: "Create [Entity1] model in src/models/[entity1].py"
-Task: "Create [Entity2] model in src/models/[entity2].py"
-```
-
----
-
-## Implementation Strategy
-
-### MVP First (User Story 1 Only)
-
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
-
-### Incremental Delivery
-
-1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
-5. Each story adds value without breaking previous stories
-
-### Parallel Team Strategy
-
-With multiple developers:
-
-1. Team completes Setup + Foundational together
-2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
-3. Stories complete and integrate independently
+- Within Phase 1: T003 (reference curation) and T004 (review criteria) can run parallel
+- Within Phase 2: All test category implementations (T006, T007, T008) can run parallel
+- Within Phase 3: All boilerplate tasks (T012-T014) can run parallel
+- Within Phase 4: All documentation tasks (T017-T021) can run parallel
 
 ---
 
 ## Notes
 
-- [P] tasks = different files, no dependencies
-- [Story] label maps task to specific user story for traceability
-- Each user story should be independently completable and testable
-- Verify tests fail before implementing
-- Commit after each task or logical group
-- Stop at any checkpoint to validate story independently
-- Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+- [P] tasks = different files, no dependencies, can be done simultaneously
+- [Category] labels for easy tracking: SPEC, TEST, BOILERPLATE, DOCS, VALIDATION
+- Test-first is mandatory: Tests written → Tests fail → Module ready for learner
+- Constitution compliance verified at multiple stages
+- Solution implementation (T025) is for validation only—NEVER shared with learners
+- Learners will work in the assignment directory, implementing code to pass pre-written tests

@@ -1,0 +1,91 @@
+# Build artifacts
+build/
+cmake-build-*/
+out/
+
+# IDE-specific files
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+
+# Compiled Object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Compiled Dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+*.la
+
+# Executables
+*.exe
+*.out
+*.app
+run_tests
+
+# Test results
+Testing/
+CTestTestfile.cmake
+
+# CMake files
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+
+# Package managers
+conan/
+vcpkg_installed/
+
+# Coverage reports
+*.gcov
+*.gcda
+*.gcno
+coverage/
+*.profdata
+*.profraw
+
+# Profiler output
+gmon.out
+perf.data
+*.dSYM/
+
+# Memory profiler output
+*.memprof
+vgcore.*
+massif.out.*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.log
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*

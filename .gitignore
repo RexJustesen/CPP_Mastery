@@ -1,0 +1,116 @@
+# C++ Build artifacts
+build/
+cmake-build-*/
+out/
+bin/
+obj/
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+Makefile
+*.cmake
+!CMakeLists.txt
+CTestTestfile.cmake
+Testing/
+
+# Compiled Object files
+*.o
+*.obj
+*.lo
+*.slo
+
+# Compiled Dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.a
+*.lib
+*.la
+
+# Executables
+*.exe
+*.out
+*.app
+run_tests
+*_main
+
+# Test results and coverage
+*.gcov
+*.gcda
+*.gcno
+coverage/
+*.profdata
+*.profraw
+
+# Profiler output
+gmon.out
+perf.data
+*.dSYM/
+
+# Memory profiler
+*.memprof
+vgcore.*
+massif.out.*
+callgrind.out.*
+
+# IDE-specific files
+.vscode/
+.vs/
+.idea/
+*.swp
+*.swo
+*~
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+
+# OS-specific
+.DS_Store
+.AppleDouble
+.LSOverride
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+.directory
+.Trash-*
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.log
+
+# Package managers
+conan/
+vcpkg_installed/
+vendor/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Documentation build
+docs/_build/
+docs/html/
+docs/latex/
+
+# Assignment-specific: Reference solutions (NEVER COMMIT)
+**/reference_solution/
+**/solution/
+**/answers/
+**/*_solution.*
+**/*_answer.*

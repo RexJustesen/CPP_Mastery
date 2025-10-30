@@ -31,7 +31,38 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**Teaching-First Philosophy**: 
+- [ ] Assignment specification focuses on learning objectives, NOT solution hints
+- [ ] Reference materials guide discovery without revealing solutions
+- [ ] Clarification pathways defined for conceptual questions only
+
+**Test-Driven Learning**:
+- [ ] Comprehensive test suite pre-written using C++ testing framework (Google Test, Catch2, etc.)
+- [ ] Tests cover core functionality, edge cases, and error conditions
+- [ ] Test execution automated with clear pass/fail reporting
+- [ ] 100% test passage required before review eligibility
+
+**Zero Solution Disclosure**:
+- [ ] No implementation code provided in assignment materials
+- [ ] Boilerplate/setup code clearly separated from solution code
+- [ ] Examples (if any) are conceptual demonstrations, NOT assignment solutions
+- [ ] Assistant responses verified to avoid revealing algorithms or logic
+
+**Progressive Mastery Path**:
+- [ ] Assignment positioned correctly in curriculum difficulty progression
+- [ ] Prerequisites clearly identified and documented
+- [ ] Learning objectives explicitly stated
+- [ ] Real-world relevance articulated
+
+**Code Review Gate**:
+- [ ] Review protocol documented: test passage verification → quality review → feedback iteration
+- [ ] Review criteria defined: code clarity, design patterns, C++ idioms, performance, maintainability
+- [ ] No refactored solution code in feedback—only improvement descriptions
+
+**Self-Reliance & Research Skills**:
+- [ ] Reference materials include cppreference.com, C++ documentation, relevant textbook chapters
+- [ ] Debugging strategies suggested in assignment guidance
+- [ ] Algorithmic thinking prompts included where appropriate
 
 ## Project Structure
 

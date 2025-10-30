@@ -1,0 +1,55 @@
+cmake_minimum_required(VERSION 3.20)
+project({PROJECT_NAME} VERSION 1.0 LANGUAGES CXX)
+
+# Set C++ standard
+set(CMAKE_CXX_STANDARD {17|20})
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+# Compiler warnings - strict compilation
+if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+    add_compile_options(
+        -Wall                # Enable most warnings
+        -Wextra              # Enable extra warnings
+        -Wpedantic           # Strict standard compliance
+        -Werror              # Treat warnings as errors
+    )
+elseif(MSVC)
+    add_compile_options(
+        /W4                  # Warning level 4
+        /WX                  # Treat warnings as errors
+    )
+endif()
+
+# Project library - student implements these files
+add_library({project}_lib
+    # List all .cpp files in src/ directory
+    # Example:
+    # src/entity.cpp
+    # src/manager.cpp
+    # src/patterns.cpp
+)
+
+# Public include directories
+target_include_directories({project}_lib PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+)
+
+# Platform-specific dependencies (if needed)
+# Example for networking projects:
+# if(WIN32)
+#     target_link_libraries({project}_lib ws2_32)
+# endif()
+
+# Example for audio projects with PortAudio:
+# find_package(portaudio REQUIRED)
+# target_link_libraries({project}_lib portaudio)
+
+# Main executable (if project has CLI entry point)
+# Optional - remove if project is library-only
+add_executable({project}_main src/main.cpp)
+target_link_libraries({project}_main {project}_lib)
+
+# Enable testing
+enable_testing()
+add_subdirectory(tests)
