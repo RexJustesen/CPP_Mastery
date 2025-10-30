@@ -230,10 +230,6 @@ This repository is designed for individual learning. If you discover issues with
 
 Please open an issue for review.
 
-## License
-
-[Specify your license here]
-
 ## Acknowledgments
 
 Built on the SpecKit framework for structured software development workflows, adapted specifically for C++ mastery learning.
